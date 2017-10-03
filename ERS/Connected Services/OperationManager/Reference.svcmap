@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d0f6a940-ee5d-406e-9aff-b25dc0d56f94" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://5jtest2r3xapi.navitaire.com/OperationManager.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OperationManager.xsd" MetadataType="Schema" ID="7d31c012-baaa-49cb-907d-3ea4f6b7cae7" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd7" />
+    <MetadataFile FileName="OperationManager1.xsd" MetadataType="Schema" ID="a5df6692-a090-420b-bebe-088575135a1b" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd6" />
+    <MetadataFile FileName="OperationManager2.xsd" MetadataType="Schema" ID="3d06cb35-5999-4e4a-89b8-79d61df29509" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd1" />
+    <MetadataFile FileName="OperationManager3.xsd" MetadataType="Schema" ID="f054aca0-ba99-4299-a203-135dac7d0ec0" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd0" />
+    <MetadataFile FileName="OperationManager4.xsd" MetadataType="Schema" ID="b276ff82-67e5-419a-92c6-c6d68a72c782" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd3" />
+    <MetadataFile FileName="OperationManager5.xsd" MetadataType="Schema" ID="6a8ab215-539f-46a9-b372-da6f24969bd4" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd2" />
+    <MetadataFile FileName="OperationManager6.xsd" MetadataType="Schema" ID="10bebd02-ca1b-4cce-8f63-9c43107c45fb" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd10" />
+    <MetadataFile FileName="OperationManager7.xsd" MetadataType="Schema" ID="e338e5f3-a9de-44ab-b866-98a4909389dc" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd9" />
+    <MetadataFile FileName="OperationManager8.xsd" MetadataType="Schema" ID="20380531-3b2d-4207-8139-aea1f4279380" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd8" />
+    <MetadataFile FileName="OperationManager.disco" MetadataType="Disco" ID="c3549899-b8d3-41c1-bbda-74b5c159aa46" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?disco" />
+    <MetadataFile FileName="OperationManager.wsdl" MetadataType="Wsdl" ID="13a0af0e-f993-48c7-aa77-d0e6204d0803" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?wsdl" />
+    <MetadataFile FileName="OperationManager9.xsd" MetadataType="Schema" ID="c641a2a3-3df3-4d25-ba92-1c4ea60bf077" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd5" />
+    <MetadataFile FileName="OperationManager10.xsd" MetadataType="Schema" ID="df47b015-da0a-40cc-ad45-a139eac2aac3" SourceId="1" SourceUrl="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

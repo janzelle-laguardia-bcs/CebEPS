@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://schemas.navitaire.com/WebServices" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OperationManager" targetNamespace="http://schemas.navitaire.com/WebServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IOperationManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://schemas.navitaire.com/WebServices/Imports">
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd5" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Operation" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd6" namespace="http://schemas.navitaire.com/WebServices" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd1" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Booking" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd2" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Common/Enumerations" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd3" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Common" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd7" namespace="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd8" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Voucher" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd9" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Queue" />
+      <xsd:import schemaLocation="https://5jtest2r3xapi.navitaire.com/OperationManager.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AssignSeatsAtCheckinRequest">
+    <wsdl:part xmlns:q1="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="AssignSeatsAtCheckinReqData" element="q1:AssignSeatsAtCheckinReqData" />
+  </wsdl:message>
+  <wsdl:message name="AssignSeatsAtCheckinRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="SeatSellResponse">
+    <wsdl:part xmlns:q2="http://schemas.navitaire.com/WebServices/DataContracts/Booking" name="seatSellRespData" element="q2:seatSellRespData" />
+  </wsdl:message>
+  <wsdl:message name="CheckInBaggageRequest">
+    <wsdl:part xmlns:q3="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q3:CheckInBaggageRequest" />
+  </wsdl:message>
+  <wsdl:message name="CheckInBaggageRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="CheckInBaggageResponse">
+    <wsdl:part xmlns:q4="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q4:CheckInBaggageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBagTagPrintersRequest">
+    <wsdl:part xmlns:q5="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="airport" element="q5:airport" />
+  </wsdl:message>
+  <wsdl:message name="GetBagTagPrintersRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetBagTagPrintersResponse">
+    <wsdl:part xmlns:q6="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="BagTagPrinters" element="q6:BagTagPrinters" />
+  </wsdl:message>
+  <wsdl:message name="GetBarCodedBoardingPassesRequest">
+    <wsdl:part xmlns:q7="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q7:GetBarCodedBoardingPassesRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetBarCodedBoardingPassesRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetBarCodedBoardingPassesResponse">
+    <wsdl:part xmlns:q8="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q8:GetBarCodedBoardingPassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightInformationRequest">
+    <wsdl:part xmlns:q9="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q9:GetFlightInformationRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightInformationRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightInformationResponse">
+    <wsdl:part xmlns:q10="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q10:GetFlightInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightSummarizedRequest">
+    <wsdl:part xmlns:q11="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q11:GetFlightSummarizedRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightSummarizedRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightSummarizedResponse">
+    <wsdl:part xmlns:q12="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q12:GetFlightSummarizedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWBPaxSummaryRequest">
+    <wsdl:part xmlns:q13="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q13:GetWBPaxSummaryRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetWBPaxSummaryRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetWBPaxSummaryResponse">
+    <wsdl:part xmlns:q14="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q14:GetWBPaxSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightsRequest">
+    <wsdl:part xmlns:q15="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q15:GetFlightsRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightsRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightsResponse">
+    <wsdl:part xmlns:q16="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q16:GetFlightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetManifestRequest">
+    <wsdl:part xmlns:q17="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q17:GetManifestRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetManifestRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetManifestResponse">
+    <wsdl:part xmlns:q18="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q18:GetManifestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetManifestFilteredRequest">
+    <wsdl:part xmlns:q19="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q19:GetManifestFilteredRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetManifestFilteredRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetManifestFilteredResponse">
+    <wsdl:part xmlns:q20="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q20:GetManifestFilteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStationLocalTimeRequest">
+    <wsdl:part xmlns:q21="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="stationCode" element="q21:stationCode" />
+  </wsdl:message>
+  <wsdl:message name="GetStationLocalTimeRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetStationLocalTimeResponse">
+    <wsdl:part xmlns:q22="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="StationLocalTime" element="q22:StationLocalTime" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBaggageRequest">
+    <wsdl:part xmlns:q23="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="RemoveBaggageRequestData" element="q23:RemoveBaggageRequestData" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBaggageRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBaggageResponse">
+    <wsdl:part xmlns:q24="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="removeBaggage" element="q24:removeBaggage" />
+  </wsdl:message>
+  <wsdl:message name="FlightNumberManifestRequest">
+    <wsdl:part xmlns:q25="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q25:GetFlightNumberManifestRequest" />
+  </wsdl:message>
+  <wsdl:message name="FlightNumberManifestRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="FlightNumberManifestResponse">
+    <wsdl:part xmlns:q26="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q26:FlightNumberManifestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendAPISRequest">
+    <wsdl:part xmlns:q27="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q27:SendAPISRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendAPISRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="SendAPISResponse">
+    <wsdl:part xmlns:q28="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q28:SendAPISResponse" />
+  </wsdl:message>
+  <wsdl:message name="FlightNumberClosureRequest">
+    <wsdl:part xmlns:q29="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="FlightNumberClosureRequestData" element="q29:FlightNumberClosureRequestData" />
+  </wsdl:message>
+  <wsdl:message name="FlightNumberClosureRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="FlightNumberClosureResponse">
+    <wsdl:part xmlns:q30="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="ClosedLegs" element="q30:ClosedLegs" />
+  </wsdl:message>
+  <wsdl:message name="GetSeatAvailabilityAtCheckinRequest">
+    <wsdl:part xmlns:q31="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q31:GetSeatAvailabilityAtCheckinRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetSeatAvailabilityAtCheckinRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetSeatAvailabilityAtCheckinResponse">
+    <wsdl:part xmlns:q32="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q32:GetSeatAvailabilityAtCheckinResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatelessSeatAvailabilityRequest">
+    <wsdl:part xmlns:q33="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q33:GetStatelessSeatAvailabilityRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetStatelessSeatAvailabilityRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetStatelessSeatAvailabilityResponse">
+    <wsdl:part xmlns:q34="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q34:GetStatelessSeatAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePNRGovMessageRequest">
+    <wsdl:part xmlns:q35="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q35:GeneratePNRGovMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePNRGovMessageRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePNRGovMessageResponse">
+    <wsdl:part xmlns:q36="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q36:GeneratePNRGovMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="TailNbrAssignmentRequest">
+    <wsdl:part xmlns:q37="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="TailNbrAssignmentRequestData" element="q37:TailNbrAssignmentRequestData" />
+  </wsdl:message>
+  <wsdl:message name="TailNbrAssignmentRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="TailNbrAssignmentResponse">
+    <wsdl:part xmlns:q38="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="TailNbrAssignmentResponseData" element="q38:TailNbrAssignmentResponseData" />
+  </wsdl:message>
+  <wsdl:message name="EquipmentSwapRequest">
+    <wsdl:part xmlns:q39="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="EquipmentSwapRequestData" element="q39:EquipmentSwapRequestData" />
+  </wsdl:message>
+  <wsdl:message name="EquipmentSwapRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="EquipmentSwapResponse">
+    <wsdl:part xmlns:q40="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="EquipmentSwapResponseData" element="q40:EquipmentSwapResponseData" />
+  </wsdl:message>
+  <wsdl:message name="BoardPassengerRequest">
+    <wsdl:part xmlns:q41="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="BoardPassengerRequestData" element="q41:BoardPassengerRequestData" />
+  </wsdl:message>
+  <wsdl:message name="BoardPassengerRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="BoardPassengerResponse">
+    <wsdl:part xmlns:q42="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="BoardPassengerResponseData" element="q42:BoardPassengerResponseData" />
+  </wsdl:message>
+  <wsdl:message name="BoardAllPassengersRequest">
+    <wsdl:part xmlns:q43="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="BoardAllPassengersRequestData" element="q43:BoardAllPassengersRequestData" />
+  </wsdl:message>
+  <wsdl:message name="BoardAllPassengersRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="BoardAllPassengersResponse">
+    <wsdl:part xmlns:q44="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="BoardAllPassengersResponseData" element="q44:BoardAllPassengersResponseData" />
+  </wsdl:message>
+  <wsdl:message name="UnBoardPassengerRequest">
+    <wsdl:part xmlns:q45="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="UnBoardPassengerRequestData" element="q45:UnBoardPassengerRequestData" />
+  </wsdl:message>
+  <wsdl:message name="UnBoardPassengerRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="UnBoardPassengerResponse">
+    <wsdl:part xmlns:q46="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="UnBoardPassengerResponseData" element="q46:UnBoardPassengerResponseData" />
+  </wsdl:message>
+  <wsdl:message name="UnBoardAllPassengersRequest">
+    <wsdl:part xmlns:q47="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="UnBoardAllPassengersRequestData" element="q47:UnBoardAllPassengersRequestData" />
+  </wsdl:message>
+  <wsdl:message name="UnBoardAllPassengersRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="UnBoardAllPassengersResponse">
+    <wsdl:part xmlns:q48="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="UnBoardAllPassengersResponseData" element="q48:UnBoardAllPassengersResponseData" />
+  </wsdl:message>
+  <wsdl:message name="UnassignSeatsAtCheckinRequest">
+    <wsdl:part xmlns:q49="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="UnassignSeatsAtCheckinRequestData" element="q49:UnassignSeatsAtCheckinRequestData" />
+  </wsdl:message>
+  <wsdl:message name="UnassignSeatsAtCheckinRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="UnassignSeatsAtCheckinResponse">
+    <wsdl:part xmlns:q50="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="UnassignSeatsAtCheckinResponseData" element="q50:UnassignSeatsAtCheckinResponseData" />
+  </wsdl:message>
+  <wsdl:message name="ProcessBaggageRequest">
+    <wsdl:part xmlns:q51="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q51:ProcessBaggageRequest" />
+  </wsdl:message>
+  <wsdl:message name="ProcessBaggageRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="ProcessBaggageResponse">
+    <wsdl:part xmlns:q52="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q52:ProcessBaggageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVerifiedTravelDocRequest">
+    <wsdl:part xmlns:q53="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="UpdateVerifiedTravelDocRequestData" element="q53:UpdateVerifiedTravelDocRequestData" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVerifiedTravelDocRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVerifiedTravelDocResponse">
+    <wsdl:part xmlns:q54="http://schemas.navitaire.com/WebServices/DataContracts/Operation" name="UpdateVerifiedTravelDocResponseData" element="q54:UpdateVerifiedTravelDocResponseData" />
+  </wsdl:message>
+  <wsdl:message name="GetBarCodedBoardingPassesMultipleRequest">
+    <wsdl:part xmlns:q55="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q55:GetBarCodedBoardingPassesMultipleRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetBarCodedBoardingPassesMultipleRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="GetBarCodedBoardingPassesMultipleResponse">
+    <wsdl:part xmlns:q56="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q56:GetBarCodedBoardingPassesMultipleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInPassengerRequest">
+    <wsdl:part xmlns:q57="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q57:CheckInPassengerRequest" />
+  </wsdl:message>
+  <wsdl:message name="CheckInPassengerRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="CheckInPassengerResponse">
+    <wsdl:part xmlns:q58="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q58:CheckInPassengerResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInPassengersRequest">
+    <wsdl:part xmlns:q59="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q59:CheckInPassengersRequest" />
+  </wsdl:message>
+  <wsdl:message name="CheckInPassengersRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="CheckInPassengersResponse">
+    <wsdl:part xmlns:q60="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q60:CheckInPassengersResponse" />
+  </wsdl:message>
+  <wsdl:message name="UndoCheckInPassengersRequest">
+    <wsdl:part xmlns:q61="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q61:UndoCheckInPassengersRequest" />
+  </wsdl:message>
+  <wsdl:message name="UndoCheckInPassengersRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="UndoCheckInPassengersResponse">
+    <wsdl:part xmlns:q62="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q62:UndoCheckInPassengersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsFlightIATCIEligibleRequest">
+    <wsdl:part xmlns:q63="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q63:IsFlightIATCIEligibleRequest" />
+  </wsdl:message>
+  <wsdl:message name="IsFlightIATCIEligibleRequest_Headers">
+    <wsdl:part name="ContractVersion" element="tns:ContractVersion" />
+    <wsdl:part name="Signature" element="tns:Signature" />
+  </wsdl:message>
+  <wsdl:message name="IsFlightIATCIEligibleResponse">
+    <wsdl:part xmlns:q64="http://schemas.navitaire.com/WebServices/ServiceContracts/OperationService" name="parameters" element="q64:IsFlightIATCIEligibleResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IOperationManager">
+    <wsdl:operation name="AssignSeatsAtCheckin">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/AssignSeatsAtCheckin" name="AssignSeatsAtCheckinRequest" message="tns:AssignSeatsAtCheckinRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/AssignSeatsAtCheckinResponse" name="SeatSellResponse" message="tns:SeatSellResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInBaggage">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/CheckInBaggage" name="CheckInBaggageRequest" message="tns:CheckInBaggageRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/CheckInBaggageResponse" name="CheckInBaggageResponse" message="tns:CheckInBaggageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBagTagPrinters">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetBagTagPrinters" name="GetBagTagPrintersRequest" message="tns:GetBagTagPrintersRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetBagTagPrintersResponse" name="GetBagTagPrintersResponse" message="tns:GetBagTagPrintersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBarCodedBoardingPasses">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetBarCodedBoardingPasses" name="GetBarCodedBoardingPassesRequest" message="tns:GetBarCodedBoardingPassesRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetBarCodedBoardingPassesResponse" name="GetBarCodedBoardingPassesResponse" message="tns:GetBarCodedBoardingPassesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightInformation">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightInformation" name="GetFlightInformationRequest" message="tns:GetFlightInformationRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightInformationResponse" name="GetFlightInformationResponse" message="tns:GetFlightInformationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightSummarized">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightSummarized" name="GetFlightSummarizedRequest" message="tns:GetFlightSummarizedRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightSummarizedResponse" name="GetFlightSummarizedResponse" message="tns:GetFlightSummarizedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWBPaxSummary">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetWBPaxSummary" name="GetWBPaxSummaryRequest" message="tns:GetWBPaxSummaryRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetWBPaxSummaryResponse" name="GetWBPaxSummaryResponse" message="tns:GetWBPaxSummaryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlights">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlights" name="GetFlightsRequest" message="tns:GetFlightsRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightsResponse" name="GetFlightsResponse" message="tns:GetFlightsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetManifest">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetManifest" name="GetManifestRequest" message="tns:GetManifestRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetManifestResponse" name="GetManifestResponse" message="tns:GetManifestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetManifestFiltered">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetManifestFiltered" name="GetManifestFilteredRequest" message="tns:GetManifestFilteredRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetManifestFilteredResponse" name="GetManifestFilteredResponse" message="tns:GetManifestFilteredResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationLocalTime">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetStationLocalTime" name="GetStationLocalTimeRequest" message="tns:GetStationLocalTimeRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetStationLocalTimeResponse" name="GetStationLocalTimeResponse" message="tns:GetStationLocalTimeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBaggage">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/RemoveBaggage" name="RemoveBaggageRequest" message="tns:RemoveBaggageRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/RemoveBaggageResponse" name="RemoveBaggageResponse" message="tns:RemoveBaggageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightNumberManifest">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightNumberManifest" name="FlightNumberManifestRequest" message="tns:FlightNumberManifestRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightNumberManifestResponse" name="FlightNumberManifestResponse" message="tns:FlightNumberManifestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateAPISMessage">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GenerateAPISMessage" name="SendAPISRequest" message="tns:SendAPISRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GenerateAPISMessageResponse" name="SendAPISResponse" message="tns:SendAPISResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseFlightNumber">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/CloseFlightNumber" name="FlightNumberClosureRequest" message="tns:FlightNumberClosureRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/CloseFlightNumberResponse" name="FlightNumberClosureResponse" message="tns:FlightNumberClosureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeatAvailabilityAtCheckin">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetSeatAvailabilityAtCheckin" name="GetSeatAvailabilityAtCheckinRequest" message="tns:GetSeatAvailabilityAtCheckinRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetSeatAvailabilityAtCheckinResponse" name="GetSeatAvailabilityAtCheckinResponse" message="tns:GetSeatAvailabilityAtCheckinResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatelessSeatAvailability">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetStatelessSeatAvailability" name="GetStatelessSeatAvailabilityRequest" message="tns:GetStatelessSeatAvailabilityRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetStatelessSeatAvailabilityResponse" name="GetStatelessSeatAvailabilityResponse" message="tns:GetStatelessSeatAvailabilityResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePNRGovMessage">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GeneratePNRGovMessage" name="GeneratePNRGovMessageRequest" message="tns:GeneratePNRGovMessageRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GeneratePNRGovMessageResponse" name="GeneratePNRGovMessageResponse" message="tns:GeneratePNRGovMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignTailNumber">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/AssignTailNumber" name="TailNbrAssignmentRequest" message="tns:TailNbrAssignmentRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/AssignTailNumberResponse" name="TailNbrAssignmentResponse" message="tns:TailNbrAssignmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="EquipmentSwap">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/EquipmentSwap" name="EquipmentSwapRequest" message="tns:EquipmentSwapRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/EquipmentSwapResponse" name="EquipmentSwapResponse" message="tns:EquipmentSwapResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BoardPassenger">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/BoardPassenger" name="BoardPassengerRequest" message="tns:BoardPassengerRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/BoardPassengerResponse" name="BoardPassengerResponse" message="tns:BoardPassengerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BoardAllPassengers">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/BoardAllPassengers" name="BoardAllPassengersRequest" message="tns:BoardAllPassengersRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/BoardAllPassengersResponse" name="BoardAllPassengersResponse" message="tns:BoardAllPassengersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UnBoardPassenger">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UnBoardPassenger" name="UnBoardPassengerRequest" message="tns:UnBoardPassengerRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UnBoardPassengerResponse" name="UnBoardPassengerResponse" message="tns:UnBoardPassengerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UnBoardAllPassengers">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UnBoardAllPassengers" name="UnBoardAllPassengersRequest" message="tns:UnBoardAllPassengersRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UnBoardAllPassengersResponse" name="UnBoardAllPassengersResponse" message="tns:UnBoardAllPassengersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UnassignSeatsAtCheckin">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UnassignSeatsAtCheckin" name="UnassignSeatsAtCheckinRequest" message="tns:UnassignSeatsAtCheckinRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UnassignSeatsAtCheckinResponse" name="UnassignSeatsAtCheckinResponse" message="tns:UnassignSeatsAtCheckinResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBaggageWithIATCI">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/ProcessBaggageWithIATCI" name="ProcessBaggageRequest" message="tns:ProcessBaggageRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/ProcessBaggageWithIATCIResponse" name="ProcessBaggageResponse" message="tns:ProcessBaggageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBaggage">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/ProcessBaggage" name="ProcessBaggageRequest" message="tns:ProcessBaggageRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/ProcessBaggageResponse" name="ProcessBaggageResponse" message="tns:ProcessBaggageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVerifiedTravelDocs">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UpdateVerifiedTravelDocs" name="UpdateVerifiedTravelDocRequest" message="tns:UpdateVerifiedTravelDocRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UpdateVerifiedTravelDocsResponse" name="UpdateVerifiedTravelDocResponse" message="tns:UpdateVerifiedTravelDocResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBarCodedBoardingPassesMultiple">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetBarCodedBoardingPassesMultiple" name="GetBarCodedBoardingPassesMultipleRequest" message="tns:GetBarCodedBoardingPassesMultipleRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/GetBarCodedBoardingPassesMultipleResponse" name="GetBarCodedBoardingPassesMultipleResponse" message="tns:GetBarCodedBoardingPassesMultipleResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInPassenger">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/CheckInPassenger" name="CheckInPassengerRequest" message="tns:CheckInPassengerRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/CheckInPassengerResponse" name="CheckInPassengerResponse" message="tns:CheckInPassengerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInPassengers">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/CheckInPassengers" name="CheckInPassengersRequest" message="tns:CheckInPassengersRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/CheckInPassengersResponse" name="CheckInPassengersResponse" message="tns:CheckInPassengersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UndoCheckInPassengers">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UndoCheckInPassengers" name="UndoCheckInPassengersRequest" message="tns:UndoCheckInPassengersRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/UndoCheckInPassengersResponse" name="UndoCheckInPassengersResponse" message="tns:UndoCheckInPassengersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFlightIATCIEligible">
+      <wsdl:input wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/IsFlightIATCIEligible" name="IsFlightIATCIEligibleRequest" message="tns:IsFlightIATCIEligibleRequest" />
+      <wsdl:output wsaw:Action="http://schemas.navitaire.com/WebServices/IOperationManager/IsFlightIATCIEligibleResponse" name="IsFlightIATCIEligibleResponse" message="tns:IsFlightIATCIEligibleResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IOperationManager" type="tns:IOperationManager">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IOperationManager_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AssignSeatsAtCheckin">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/AssignSeatsAtCheckin" style="document" />
+      <wsdl:input name="AssignSeatsAtCheckinRequest">
+        <soap:header message="tns:AssignSeatsAtCheckinRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:AssignSeatsAtCheckinRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SeatSellResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInBaggage">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/CheckInBaggage" style="document" />
+      <wsdl:input name="CheckInBaggageRequest">
+        <soap:header message="tns:CheckInBaggageRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:CheckInBaggageRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckInBaggageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBagTagPrinters">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetBagTagPrinters" style="document" />
+      <wsdl:input name="GetBagTagPrintersRequest">
+        <soap:header message="tns:GetBagTagPrintersRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetBagTagPrintersRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBagTagPrintersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBarCodedBoardingPasses">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetBarCodedBoardingPasses" style="document" />
+      <wsdl:input name="GetBarCodedBoardingPassesRequest">
+        <soap:header message="tns:GetBarCodedBoardingPassesRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetBarCodedBoardingPassesRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBarCodedBoardingPassesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightInformation">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightInformation" style="document" />
+      <wsdl:input name="GetFlightInformationRequest">
+        <soap:header message="tns:GetFlightInformationRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetFlightInformationRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetFlightInformationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightSummarized">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightSummarized" style="document" />
+      <wsdl:input name="GetFlightSummarizedRequest">
+        <soap:header message="tns:GetFlightSummarizedRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetFlightSummarizedRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetFlightSummarizedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWBPaxSummary">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetWBPaxSummary" style="document" />
+      <wsdl:input name="GetWBPaxSummaryRequest">
+        <soap:header message="tns:GetWBPaxSummaryRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetWBPaxSummaryRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetWBPaxSummaryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlights">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlights" style="document" />
+      <wsdl:input name="GetFlightsRequest">
+        <soap:header message="tns:GetFlightsRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetFlightsRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetFlightsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetManifest">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetManifest" style="document" />
+      <wsdl:input name="GetManifestRequest">
+        <soap:header message="tns:GetManifestRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetManifestRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetManifestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetManifestFiltered">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetManifestFiltered" style="document" />
+      <wsdl:input name="GetManifestFilteredRequest">
+        <soap:header message="tns:GetManifestFilteredRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetManifestFilteredRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetManifestFilteredResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationLocalTime">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetStationLocalTime" style="document" />
+      <wsdl:input name="GetStationLocalTimeRequest">
+        <soap:header message="tns:GetStationLocalTimeRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetStationLocalTimeRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetStationLocalTimeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBaggage">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/RemoveBaggage" style="document" />
+      <wsdl:input name="RemoveBaggageRequest">
+        <soap:header message="tns:RemoveBaggageRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:RemoveBaggageRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RemoveBaggageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightNumberManifest">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetFlightNumberManifest" style="document" />
+      <wsdl:input name="FlightNumberManifestRequest">
+        <soap:header message="tns:FlightNumberManifestRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:FlightNumberManifestRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="FlightNumberManifestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateAPISMessage">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GenerateAPISMessage" style="document" />
+      <wsdl:input name="SendAPISRequest">
+        <soap:header message="tns:SendAPISRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:SendAPISRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SendAPISResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseFlightNumber">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/CloseFlightNumber" style="document" />
+      <wsdl:input name="FlightNumberClosureRequest">
+        <soap:header message="tns:FlightNumberClosureRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:FlightNumberClosureRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="FlightNumberClosureResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeatAvailabilityAtCheckin">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetSeatAvailabilityAtCheckin" style="document" />
+      <wsdl:input name="GetSeatAvailabilityAtCheckinRequest">
+        <soap:header message="tns:GetSeatAvailabilityAtCheckinRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetSeatAvailabilityAtCheckinRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetSeatAvailabilityAtCheckinResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatelessSeatAvailability">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetStatelessSeatAvailability" style="document" />
+      <wsdl:input name="GetStatelessSeatAvailabilityRequest">
+        <soap:header message="tns:GetStatelessSeatAvailabilityRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetStatelessSeatAvailabilityRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetStatelessSeatAvailabilityResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePNRGovMessage">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GeneratePNRGovMessage" style="document" />
+      <wsdl:input name="GeneratePNRGovMessageRequest">
+        <soap:header message="tns:GeneratePNRGovMessageRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GeneratePNRGovMessageRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GeneratePNRGovMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignTailNumber">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/AssignTailNumber" style="document" />
+      <wsdl:input name="TailNbrAssignmentRequest">
+        <soap:header message="tns:TailNbrAssignmentRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:TailNbrAssignmentRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TailNbrAssignmentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EquipmentSwap">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/EquipmentSwap" style="document" />
+      <wsdl:input name="EquipmentSwapRequest">
+        <soap:header message="tns:EquipmentSwapRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:EquipmentSwapRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="EquipmentSwapResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoardPassenger">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/BoardPassenger" style="document" />
+      <wsdl:input name="BoardPassengerRequest">
+        <soap:header message="tns:BoardPassengerRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:BoardPassengerRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="BoardPassengerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoardAllPassengers">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/BoardAllPassengers" style="document" />
+      <wsdl:input name="BoardAllPassengersRequest">
+        <soap:header message="tns:BoardAllPassengersRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:BoardAllPassengersRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="BoardAllPassengersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnBoardPassenger">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/UnBoardPassenger" style="document" />
+      <wsdl:input name="UnBoardPassengerRequest">
+        <soap:header message="tns:UnBoardPassengerRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:UnBoardPassengerRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnBoardPassengerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnBoardAllPassengers">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/UnBoardAllPassengers" style="document" />
+      <wsdl:input name="UnBoardAllPassengersRequest">
+        <soap:header message="tns:UnBoardAllPassengersRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:UnBoardAllPassengersRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnBoardAllPassengersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnassignSeatsAtCheckin">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/UnassignSeatsAtCheckin" style="document" />
+      <wsdl:input name="UnassignSeatsAtCheckinRequest">
+        <soap:header message="tns:UnassignSeatsAtCheckinRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:UnassignSeatsAtCheckinRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnassignSeatsAtCheckinResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBaggageWithIATCI">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/ProcessBaggageWithIATCI" style="document" />
+      <wsdl:input name="ProcessBaggageRequest">
+        <soap:header message="tns:ProcessBaggageRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:ProcessBaggageRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ProcessBaggageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBaggage">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/ProcessBaggage" style="document" />
+      <wsdl:input name="ProcessBaggageRequest">
+        <soap:header message="tns:ProcessBaggageRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:ProcessBaggageRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ProcessBaggageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVerifiedTravelDocs">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/UpdateVerifiedTravelDocs" style="document" />
+      <wsdl:input name="UpdateVerifiedTravelDocRequest">
+        <soap:header message="tns:UpdateVerifiedTravelDocRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:UpdateVerifiedTravelDocRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateVerifiedTravelDocResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBarCodedBoardingPassesMultiple">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/GetBarCodedBoardingPassesMultiple" style="document" />
+      <wsdl:input name="GetBarCodedBoardingPassesMultipleRequest">
+        <soap:header message="tns:GetBarCodedBoardingPassesMultipleRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:GetBarCodedBoardingPassesMultipleRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBarCodedBoardingPassesMultipleResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInPassenger">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/CheckInPassenger" style="document" />
+      <wsdl:input name="CheckInPassengerRequest">
+        <soap:header message="tns:CheckInPassengerRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:CheckInPassengerRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckInPassengerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInPassengers">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/CheckInPassengers" style="document" />
+      <wsdl:input name="CheckInPassengersRequest">
+        <soap:header message="tns:CheckInPassengersRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:CheckInPassengersRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckInPassengersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UndoCheckInPassengers">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/UndoCheckInPassengers" style="document" />
+      <wsdl:input name="UndoCheckInPassengersRequest">
+        <soap:header message="tns:UndoCheckInPassengersRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:UndoCheckInPassengersRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UndoCheckInPassengersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFlightIATCIEligible">
+      <soap:operation soapAction="http://schemas.navitaire.com/WebServices/IOperationManager/IsFlightIATCIEligible" style="document" />
+      <wsdl:input name="IsFlightIATCIEligibleRequest">
+        <soap:header message="tns:IsFlightIATCIEligibleRequest_Headers" part="ContractVersion" use="literal" />
+        <soap:header message="tns:IsFlightIATCIEligibleRequest_Headers" part="Signature" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="IsFlightIATCIEligibleResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OperationManager">
+    <wsdl:port name="BasicHttpBinding_IOperationManager" binding="tns:BasicHttpBinding_IOperationManager">
+      <soap:address location="https://5jtest2r3xapi.navitaire.com/OperationManager.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
